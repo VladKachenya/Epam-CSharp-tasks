@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading;
 
 namespace App
 {
 
-    
+
 
     class Program
     {
@@ -13,22 +14,26 @@ namespace App
         {
             var exit = false;
             var service = new Service();
+
             int lastId = 0;
+
+            Console.WriteLine("Press any key to start");
+            Console.ReadKey();
 
             ThreadStart get = () =>
             {
                 Console.WriteLine("t1 started");
                 do
                 {
-                    for (int i = 1; i < lastId; i++)
+                    for (int i = 1; i < lastId + 1; i++)
                     {
                         if (exit)
                         {
                             Console.WriteLine("t2 ended");
                             return;
                         }
-                        Console.WriteLine("Get({0})", i);
-                        service.Get(i);
+                        var receivedUser = service.Get(i);
+                        Console.WriteLine("Get({0})", receivedUser != null ? receivedUser.Id.ToString() : "User not found");
                     }
                     if (exit)
                     {
@@ -57,20 +62,28 @@ namespace App
                         Id = id,
                         // other fields
                     };
-                    service.Add(user);
+                    try
+                    {
+                        Stopwatch sw = new Stopwatch();
+                        sw.Start();
+                        service.Add(user);
+                        Console.WriteLine($"User with Id {user.Id} added (ms: {sw.ElapsedMilliseconds})");
+                        sw.Stop();
+                    }
+                    catch (UserExistsException e)
+                    {
+                        Console.WriteLine($"User with Id {user.Id} already added");
+                    }
 
                 } while (!exit);
             };
 
             var threadWrite = new Thread(set);
             threadWrite.Start();
-
-            Console.WriteLine("Hello World!");
             Console.ReadKey();
 
             exit = true;
 
-            Console.WriteLine("Press any key to exit");
             Console.ReadKey();
         }
     }

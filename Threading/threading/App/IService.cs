@@ -9,5 +9,6 @@ namespace App
         void Add(User user);
 
         User Get(long id);
+
     }
 }

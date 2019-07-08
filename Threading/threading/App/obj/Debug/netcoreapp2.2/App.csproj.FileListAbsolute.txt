@@ -9,3 +9,14 @@ C:\Users\vkachenya\Desktop\GitHub Folder\Epam-CSharp-tasks\Threading\threading\A
 C:\Users\vkachenya\Desktop\GitHub Folder\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.AssemblyInfo.cs
 C:\Users\vkachenya\Desktop\GitHub Folder\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.dll
 C:\Users\vkachenya\Desktop\GitHub Folder\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.pdb
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\bin\Debug\netcoreapp2.2\App.deps.json
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\bin\Debug\netcoreapp2.2\App.runtimeconfig.json
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\bin\Debug\netcoreapp2.2\App.runtimeconfig.dev.json
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\bin\Debug\netcoreapp2.2\App.dll
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\bin\Debug\netcoreapp2.2\App.pdb
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.csprojAssemblyReference.cache
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.csproj.CoreCompileInputs.cache
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.AssemblyInfoInputs.cache
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.AssemblyInfo.cs
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.dll
+C:\Users\vskac\Desktop\GitHub\Epam-CSharp-tasks\Threading\threading\App\obj\Debug\netcoreapp2.2\App.pdb
