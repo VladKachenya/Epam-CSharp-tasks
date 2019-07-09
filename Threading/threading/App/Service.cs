@@ -40,7 +40,7 @@ namespace App
             {
                 using (FileStream fstream = new FileStream(_dirPath, FileMode.Append, FileAccess.Write))
                 {
-                    var byteUser = _userConverterFun().UserToBytes(user);
+                    var byteUser = _userConverterFun().ToBytes(user);
                     fstream.Write(byteUser, 0, byteUser.Length);
                     int offset = _offsetTable.Count * 260;
                     _offsetTable.Add(user.Id, offset);
@@ -63,7 +63,7 @@ namespace App
                     byte[] byteUser = new byte[260];
                     fstream.Seek(offset, SeekOrigin.Begin);
                     fstream.Read(byteUser, 0, 260);
-                    return _userConverterFun().BytesToUser(byteUser);
+                    return _userConverterFun().ToUser(byteUser);
                 }
             }
             finally

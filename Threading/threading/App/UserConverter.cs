@@ -4,7 +4,7 @@ namespace App
 {
     public class UserConverter
     {
-        public byte[] UserToBytes(User user)
+        public byte[] ToBytes(User user)
         {
             byte[] res = new byte[260];
             int pointer = 0;
@@ -18,7 +18,7 @@ namespace App
             return res;
         }
 
-        public User BytesToUser(byte[] bytesUser)
+        public User ToUser(byte[] bytesUser)
         {
             if (bytesUser.Length != 260)
             {
