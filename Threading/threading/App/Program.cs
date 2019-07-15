@@ -20,7 +20,7 @@ namespace App
             Console.WriteLine("Press any key to start");
             Console.ReadKey();
 
-            ThreadStart get = () =>
+            async void Get()
             {
                 Console.WriteLine("t1 started");
                 do
@@ -32,26 +32,28 @@ namespace App
                             Console.WriteLine("t2 ended");
                             return;
                         }
-                        var receivedUser = service.Get(i);
-                        Console.WriteLine("Get({0})", receivedUser != null ? receivedUser.Id.ToString() : "User not found");
+
+                        var receivedUser = await service.GetAsync(i);
+                        Console.WriteLine("GetAsync({0})", receivedUser != null ? receivedUser.Id.ToString() : "User not found");
                     }
+
                     if (exit)
                     {
                         Console.WriteLine("t2 ended");
                         return;
                     }
                 } while (true);
-            };
+            }
 
             var threadGet = new Thread[10];
 
             for (var i = 0; i < 10; i++)
             {
-                threadGet[i] = new Thread(get);
+                threadGet[i] = new Thread(Get);
                 threadGet[i].Start();
             }
 
-            ThreadStart set = () =>
+            async void Set()
             {
                 do
                 {
@@ -66,7 +68,7 @@ namespace App
                     {
                         Stopwatch sw = new Stopwatch();
                         sw.Start();
-                        service.Add(user);
+                        await service.AddAsync(user);
                         Console.WriteLine($"User with Id {user.Id} added (ms: {sw.ElapsedMilliseconds})");
                         sw.Stop();
                     }
@@ -74,11 +76,10 @@ namespace App
                     {
                         Console.WriteLine($"User with Id {user.Id} already added");
                     }
-
                 } while (!exit);
-            };
+            }
 
-            var threadWrite = new Thread(set);
+            var threadWrite = new Thread(Set);
             threadWrite.Start();
             Console.ReadKey();
 

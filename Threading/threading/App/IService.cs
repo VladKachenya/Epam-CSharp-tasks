@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace App
 {
     interface IService
     {
-        void Add(User user);
+        Task AddAsync(User user);
 
-        User Get(long id);
+        Task<User> GetAsync(long id);
 
     }
 }

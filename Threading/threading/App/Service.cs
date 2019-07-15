@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace App
 {
@@ -11,19 +12,22 @@ namespace App
     {
         private readonly object _lockObject = new object();
         private readonly Dictionary<int, int> _offsetTable;
-        private readonly ReaderWriterLockSlim _rwLock;
+        //private readonly ReaderWriterLockSlim _rwLock;
         private readonly string _dirPath = Directory.GetCurrentDirectory() + "/data.dat";
         private readonly Func<UserConverter> _userConverterFun;
+        private readonly SemaphoreSlim _semaphoreSlim;
+        private int _threadsNumber = 10;
 
         public Service()
         {
             _userConverterFun = () => new UserConverter();
             _offsetTable = new Dictionary<int, int>();
-            _rwLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
+            _semaphoreSlim = new SemaphoreSlim(_threadsNumber);
+            //_rwLock = new ReaderWriterLockSlim(LockRecursionPolicy.SupportsRecursion);
             Initialization();
         }
 
-        public void Add(User user)
+        public async Task AddAsync(User user)
         {
             if (user == null)
             {
@@ -35,26 +39,32 @@ namespace App
                 throw new UserExistsException();
             }
 
-            _rwLock.EnterWriteLock();
+            for (int i = 0; i < _threadsNumber; i++)
+            {
+                await _semaphoreSlim.WaitAsync();
+            }
+            //_rwLock.EnterWriteLock();
             try
             {
                 using (FileStream fstream = new FileStream(_dirPath, FileMode.Append, FileAccess.Write))
                 {
                     var byteUser = _userConverterFun().ToBytes(user);
-                    fstream.Write(byteUser, 0, byteUser.Length);
+                    await fstream.WriteAsync(byteUser, 0, byteUser.Length);
                     int offset = _offsetTable.Count * 260;
                     _offsetTable.Add(user.Id, offset);
                 }
             }
             finally
             {
-                _rwLock.ExitWriteLock();
+                _semaphoreSlim.Release(_threadsNumber);
+                //_rwLock.ExitWriteLock();
             }
         }
 
-        public User Get(long id)
+        public async Task<User> GetAsync(long id)
         {
-            _rwLock.EnterReadLock();
+            await _semaphoreSlim.WaitAsync();
+            //_rwLock.EnterReadLock();
             try
             {
                 var offset = _offsetTable.FirstOrDefault(ur => ur.Key == id).Value;
@@ -62,13 +72,14 @@ namespace App
                 {
                     byte[] byteUser = new byte[260];
                     fstream.Seek(offset, SeekOrigin.Begin);
-                    fstream.Read(byteUser, 0, 260);
+                    await fstream.ReadAsync(byteUser, 0, 260);
                     return _userConverterFun().ToUser(byteUser);
                 }
             }
             finally
             {
-                _rwLock.ExitReadLock();
+                _semaphoreSlim.Release();
+                //_rwLock.ExitReadLock();
             }
         }
 

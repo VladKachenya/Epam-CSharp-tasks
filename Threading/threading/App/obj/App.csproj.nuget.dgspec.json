@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\vskac\\Desktop\\GitHub\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj": {}
+    "C:\\Users\\vkachenya\\Desktop\\GitHub Folder\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj": {}
   },
   "projects": {
-    "C:\\Users\\vskac\\Desktop\\GitHub\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj": {
+    "C:\\Users\\vkachenya\\Desktop\\GitHub Folder\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\vskac\\Desktop\\GitHub\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj",
+        "projectUniqueName": "C:\\Users\\vkachenya\\Desktop\\GitHub Folder\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj",
         "projectName": "App",
-        "projectPath": "C:\\Users\\vskac\\Desktop\\GitHub\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj",
-        "packagesPath": "C:\\Users\\vskac\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\vskac\\Desktop\\GitHub\\Epam-CSharp-tasks\\Threading\\threading\\App\\obj\\",
+        "projectPath": "C:\\Users\\vkachenya\\Desktop\\GitHub Folder\\Epam-CSharp-tasks\\Threading\\threading\\App\\App.csproj",
+        "packagesPath": "C:\\Users\\vkachenya\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\vkachenya\\Desktop\\GitHub Folder\\Epam-CSharp-tasks\\Threading\\threading\\App\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\vskac\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\vkachenya\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
